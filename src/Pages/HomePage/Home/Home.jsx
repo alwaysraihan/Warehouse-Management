@@ -1,12 +1,12 @@
 import React from "react";
+import InventoryItems from "../../InventoryPage/InventoryItems/InventoryItems";
 import Banner from "../Banner/Banner";
 
 const Home = () => {
   return (
     <>
-      <div className="lg:px-[12%] max-h-[40vh]">
-        <Banner />
-      </div>
+      <Banner />
+      <InventoryItems />
     </>
   );
 };
