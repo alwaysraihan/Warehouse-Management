@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "./Inventory.css";
 
 const InventoryItems = () => {
   const [inventoryItemes, setEnventoryItems] = useState([]);
@@ -20,8 +22,8 @@ const InventoryItems = () => {
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-4 xl:gap-10 justify-center items-center min-h-screen bg-gray-100 px-[2%] md:px-[3%] lg:px-[4%] xl:px-[10%]">
         {inventoryItemes.map((item) => (
-          <div key={item._id} className="w-full p-2">
-            <div className="bg-white shadow-lg hover:shadow-xl rounded-lg ">
+          <div key={item._id} className="w-full p-2 ">
+            <div className="bg-white shadow-lg hover:shadow-xl rounded-lg relative">
               <div
                 className="bg-gray-400 h-64 rounded-t-lg p-4 bg-no-repeat bg-center bg-cover"
                 style={{
@@ -37,14 +39,27 @@ const InventoryItems = () => {
                     {item.description.slice(0, 50) + "..."}
                   </p>
                 </div>
+
                 <div className="p-2 text-right">
-                  <h1 className="font-semibold text-center text-lg font-poppins">
-                    Price<br></br>{" "}
-                    <span className="text-left text-teal-500">
-                      $ {item.price}
-                    </span>{" "}
-                  </h1>
+                  <div className="text-teal-500 font-semibold text-center text-lg font-poppins">
+                    ${item.price}
+                  </div>
+
+                  <div>
+                    <div className=" flex justify-center items-center font-semibold text-gray-500 text-center text-sm font-poppins">
+                      Price
+                    </div>
+                  </div>
                 </div>
+              </div>
+              <div className="flex px-4 justify-between items-center">
+                <h1 className="text-gray-400 text-sm">{item.suplierName}</h1>
+                <h1>
+                  <span className="font-bold">Availability: </span>{" "}
+                  <span className="text-gray-500">
+                    <span>{item.quantity}</span> in stock
+                  </span>
+                </h1>
               </div>
               <div className="flex justify-center items-center px-2 pb-2">
                 <div className="w-1/2 p-2">
@@ -59,10 +74,18 @@ const InventoryItems = () => {
                   </button>
                 </div>
                 <div className="w-1/2 p-2">
-                  <button className="block w-full bg-white hover:bg-gray-100 text-teal-500 border-2 border-teal-500 px-3 py-2 rounded uppercase font-poppins font-medium">
+                  <Link
+                    to={`/inventory/${item._id}`}
+                    className="block text-center cursor-pointerZ bg-white hover:bg-gray-100 text-teal-500 border-2 border-teal-500 px-3 py-2 rounded uppercase font-poppins font-medium"
+                  >
                     Update
-                  </button>
+                  </Link>
                 </div>
+              </div>
+              <div class="ribbon ribbon-top-right">
+                <span>
+                  {parseInt(item.quantity) === 0 ? "Out of stock" : "In Stock"}
+                </span>
               </div>
             </div>
           </div>
