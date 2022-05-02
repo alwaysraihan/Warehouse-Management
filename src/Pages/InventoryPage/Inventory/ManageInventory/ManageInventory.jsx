@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const ManageInventory = () => {
   const [inventoryItemes, setEnventoryItems] = useState([]);
@@ -43,12 +44,12 @@ const ManageInventory = () => {
                 />
               </div>
               <div className="flex items-center py-2">
-                <a
-                  href="/"
+                <NavLink
+                  to="/dashboard/add-inventory-item"
                   className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline"
                 >
                   Create new Items
-                </a>
+                </NavLink>
               </div>
             </div>
             <div className="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">

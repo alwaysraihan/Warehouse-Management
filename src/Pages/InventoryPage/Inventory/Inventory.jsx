@@ -74,7 +74,7 @@ const Inventory = () => {
   return (
     <>
       <div className="flex relative lg:static">
-        <div className="sticky top-0 bg-[rgb(0,7,61)] h-[100vh]">
+        <div className="sticky top-0 bg-[rgb(0,7,61)] ">
           <div className="absolute  top-0 left-0 h-full lg:static">
             <Slider />
           </div>

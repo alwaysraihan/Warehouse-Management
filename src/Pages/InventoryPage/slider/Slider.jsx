@@ -31,7 +31,7 @@ const Slider = () => {
       icon: <BsCartCheck />,
     },
     {
-      path: "dashborad/manage-",
+      path: "add-inventory-item",
       name: "File Manager",
       icon: <AiTwotoneFileExclamation />,
     },
