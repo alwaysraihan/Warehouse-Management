@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { XIcon, MenuIcon } from "@heroicons/react/solid";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from "firebase/auth";
+import auth from "../../../Firebase/firebase.init";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const [user] = useAuthState(auth);
+  const handleSignOut = () => {
+    signOut(auth);
+  };
   return (
     <>
       <div className=" py-2 md:py-4 bg-gray-800 text-white">
@@ -57,14 +63,14 @@ const Header = () => {
               Blogs
             </NavLink>
             <NavLink
-              to="/checkout"
+              to="/dashboard/manage-inventory"
               className={({ isActive }) =>
                 isActive
                   ? "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 bg-indigo-600"
                   : "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 "
               }
             >
-              Checkout
+              Manage Inventory
             </NavLink>
             <NavLink
               to="/contact"
@@ -76,11 +82,48 @@ const Header = () => {
             >
               Contact
             </NavLink>
+            {/* {user?.displayName ? (
+              <h1 className="text-xl text-yellow-200 font-semibold">
+                {user.displayName}
+              </h1>
+            ) : (
+              ""
+            )} */}
+            {user ? (
+              <button
+                onClick={handleSignOut}
+                className="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-solid border-indigo-600 rounded  transition-colors duration-300 mt-1 md:mt-0 md:ml-1 hover:bg-indigo-600 hover:text-white"
+              >
+                Signout
+              </button>
+            ) : (
+              <div>
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "p-2 lg:px-4 md:mx-2 text-white bg-indigo-600 text-center border border-transparent rounded hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-300"
+                      : "p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-transparent rounded hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-300 "
+                  }
+                >
+                  Login
+                </NavLink>
+                <NavLink
+                  to="/register"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "p-2 lg:px-4 md:mx-2  text-center border border-solid border-indigo-600 rounded  transition-colors duration-300 mt-1 md:mt-0 md:ml-1 bg-indigo-600 text-white"
+                      : "p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-solid border-indigo-600 rounded  transition-colors duration-300 mt-1 md:mt-0 md:ml-1"
+                  }
+                >
+                  Signup
+                </NavLink>
+              </div>
+            )}
           </nav>
           {/* </div> */}
         </div>
       </div>
-      <hr />
     </>
   );
 };

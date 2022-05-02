@@ -9,7 +9,7 @@ const InventoryItems = () => {
     const loadData = async () => {
       try {
         const { data } = await axios.get(
-          `https://perfume-warehouse-server.herokuapp.com/inventory-items`
+          `http://localhost:5000/inventory-items`
         );
         setEnventoryItems(data);
       } catch (err) {
@@ -75,14 +75,14 @@ const InventoryItems = () => {
                 </div>
                 <div className="w-1/2 p-2">
                   <Link
-                    to={`/inventory/${item._id}`}
+                    to={`dashboard/inventory/${item._id}`}
                     className="block text-center cursor-pointerZ bg-white hover:bg-gray-100 text-teal-500 border-2 border-teal-500 px-3 py-2 rounded uppercase font-poppins font-medium"
                   >
                     Update
                   </Link>
                 </div>
               </div>
-              <div class="ribbon ribbon-top-right">
+              <div className="ribbon ribbon-top-right">
                 <span>
                   {parseInt(item.quantity) === 0 ? "Out of stock" : "In Stock"}
                 </span>
