@@ -14,7 +14,7 @@ const Dashboard = () => {
         </div>
         <div className="w-full">
           <Routes>
-            <Route path="dashboard/home" element={<DashboardHome />} />
+            <Route path="/admin/home" element={<DashboardHome />} />
             <Route path="/manage-inventory" element={<ManageInventory />} />
             <Route path="/add-inventory-item" element={<AddNewStoclItem />} />
           </Routes>

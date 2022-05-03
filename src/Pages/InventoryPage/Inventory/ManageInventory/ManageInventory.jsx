@@ -54,10 +54,10 @@ const ManageInventory = () => {
             </div>
             <div className="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
               <div className="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
-                <table className="min-w-full">
+                <table className="min-w-full table-auto">
                   <thead>
                     <tr className="border-b border-gray-200 font-thin bg-white leading-4 tracking-wider text-base text-gray-500">
-                      <th className="px-6 py-5 text-left" colSpan="6">
+                      <th className="px-6 py-5 text-left" colSpan="100%">
                         <p>Manage Inventory</p>
                       </th>
                     </tr>

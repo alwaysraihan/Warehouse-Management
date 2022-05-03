@@ -11,12 +11,12 @@ const Slider = () => {
   const { id } = useParams();
   const routes = [
     {
-      path: "dashboard/home",
-      name: "Home",
+      path: `${id ? `/dashboard/admin/home` : "admin/home"}`,
+      name: "Dashboad",
       icon: <FaHome />,
     },
     {
-      path: "dashboard/profile",
+      path: `${id ? `/dashboard/-my-item` : "my-item"}`,
       name: "Users",
       icon: <FaUser />,
     },
@@ -27,12 +27,12 @@ const Slider = () => {
     },
     {
       path: `/dashboard/${id ? `inventory/${id}` : "manage-inventory"}`,
-      name: "Update",
+      name: `${id ? "Update Inventory" : "Manage Inventory"}`,
       icon: <BsCartCheck />,
     },
     {
-      path: "add-inventory-item",
-      name: "File Manager",
+      path: `${id ? `/dashboard/add-inventory-item` : "add-inventory-item"}`,
+      name: "Add New Item",
       icon: <AiTwotoneFileExclamation />,
     },
     {
