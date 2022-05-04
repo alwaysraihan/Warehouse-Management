@@ -40,17 +40,16 @@ const Login = () => {
   if (user1 || user2) {
     navigate(from, { replace: true });
   }
-  if (loading || updating || loading1 || loading2) {
+  if (loading1 || loading2) {
     return <Loading></Loading>;
   }
-  if (error || updateError || loading1 || loading2) {
+  if (error || updateError || error1 || error2) {
     errorText = (
       <p className="text-red-600">
-        Error:{" "}
-        {error?.message ||
-          updateError?.message ||
-          loading1?.message ||
-          loading2?.message}
+        Error: {error?.message}
+        {updateError?.message}
+        {loading1?.message}
+        {loading2?.message}
       </p>
     );
   }
@@ -182,6 +181,7 @@ const Login = () => {
                 </span>
                 <div className="flex flex-col space-y-4">
                   <button
+                    type="button"
                     onClick={() => {
                       signInWithGithub();
                     }}
@@ -205,6 +205,7 @@ const Login = () => {
                     </span>
                   </button>
                   <button
+                    type="button"
                     onClick={() => {
                       signInWithGoogle();
                     }}
@@ -238,9 +239,12 @@ const Login = () => {
               </div>
             </form>
           </div>
-          {errorText ? toast(errorText) : ""}
         </div>
       </div>
+      {errorText &&
+        toast.error(errorText, {
+          toastId: "registerError",
+        })}
     </>
   );
 };
