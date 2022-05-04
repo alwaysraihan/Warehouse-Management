@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AddNewStoclItem from "../AddNewInventory/AddNewStoclItem";
 import ManageInventory from "../Inventory/ManageInventory/ManageInventory";
+import MyItem from "../MyItems/MyItem";
 import Slider from "../slider/Slider";
 import DashboardHome from "./DashboardHome";
 
@@ -15,6 +16,7 @@ const Dashboard = () => {
         <div className="w-full">
           <Routes>
             <Route path="/admin/home" element={<DashboardHome />} />
+            <Route path="/my-item" element={<MyItem />} />
             <Route path="/manage-inventory" element={<ManageInventory />} />
             <Route path="/add-inventory-item" element={<AddNewStoclItem />} />
           </Routes>

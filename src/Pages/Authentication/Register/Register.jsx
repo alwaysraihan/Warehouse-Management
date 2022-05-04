@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGithub,
@@ -9,38 +9,48 @@ import {
 import auth from "../../../Firebase/firebase.init";
 import { toast } from "react-toastify";
 import Loading from "../../SharedPage/Loading/Loading";
+import useToken from "../../../hooks/useToken";
 const Login = () => {
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [userLoginData, setUserLoginData] = useState({
     name: "",
     email: "",
     password: "",
   });
-
   const navigate = useNavigate();
-  const [signInWithGoogle] = useSignInWithGoogle(auth);
-  const [signInWithGithub] = useSignInWithGithub(auth);
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+  const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
+  const [signInWithGithub, user2, loading2, error2] = useSignInWithGithub(auth);
   let errorText;
   let name, value;
+  const [token] = useToken(user || user1 || user2);
   const getUserData = (e) => {
     name = e.target.name;
     value = e.target.value;
     setUserLoginData({ ...userLoginData, [name]: value });
     e.preventDefault();
   };
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-  if (user) {
-    navigate("/checkout");
+  if (token) {
+    navigate(from, { replace: true });
   }
-  if (loading || updating) {
+  if (user1 || user2) {
+    navigate(from, { replace: true });
+  }
+  if (loading || updating || loading1 || loading2) {
     return <Loading></Loading>;
   }
-  if (error || updateError) {
+  if (error || updateError || loading1 || loading2) {
     errorText = (
       <p className="text-red-600">
-        Error: {error?.message || updateError?.message}
+        Error:{" "}
+        {error?.message ||
+          updateError?.message ||
+          loading1?.message ||
+          loading2?.message}
       </p>
     );
   }
@@ -221,7 +231,7 @@ const Login = () => {
                       </svg>
                     </span>
                     <span className="text-sm font-medium text-blue-500 group-hover:text-white">
-                      Twitter
+                      Google
                     </span>
                   </button>
                 </div>

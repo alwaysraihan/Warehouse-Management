@@ -16,15 +16,11 @@ const Slider = () => {
       icon: <FaHome />,
     },
     {
-      path: `${id ? `/dashboard/-my-item` : "my-item"}`,
+      path: `${id ? `/dashboard/my-item` : "my-item"}`,
       name: "Users",
       icon: <FaUser />,
     },
-    {
-      path: "dashboard/message",
-      name: "Messages",
-      icon: <MdMessage />,
-    },
+
     {
       path: `/dashboard/${id ? `inventory/${id}` : "manage-inventory"}`,
       name: `${id ? "Update Inventory" : "Manage Inventory"}`,
@@ -36,18 +32,23 @@ const Slider = () => {
       icon: <AiTwotoneFileExclamation />,
     },
     {
-      path: "dashboard/anlaysetic",
+      path: `${id ? `/dashboard/anlaysetic` : "anlaysetic"}`,
       name: "Order",
       icon: <BiAnalyse />,
     },
     {
-      path: "/settings",
+      path: `${id ? `/dashboard/admin-chat` : "admin-chat"}`,
+      name: "Messages",
+      icon: <MdMessage />,
+    },
+    {
+      path: `${id ? `/dashboard/settings` : "settings"}`,
       name: "Settings",
       icon: <BiCog />,
       exact: true,
     },
     {
-      path: "/saved",
+      path: `${id ? `/dashboard/saved` : "saved"}`,
       name: "Saved",
       icon: <AiFillHeart />,
     },

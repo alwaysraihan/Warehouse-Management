@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
@@ -9,16 +9,23 @@ import {
 import auth from "../../../Firebase/firebase.init";
 import { toast } from "react-toastify";
 import Loading from "../../SharedPage/Loading/Loading";
+import useToken from "../../../hooks/useToken";
 const Login = () => {
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   const [userLoginData, setUserLoginData] = useState({
     email: "",
     password: "",
   });
-  const [signInWithGoogle] = useSignInWithGoogle(auth);
-  const [signInWithGithub] = useSignInWithGithub(auth);
+  const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
+  const [signInWithGithub, user2, loading2, error2] = useSignInWithGithub(auth);
 
+  const [token] = useToken(user || user1 || user2);
   let errorText;
   let name, value;
   const getUserData = (e) => {
@@ -27,26 +34,25 @@ const Login = () => {
     setUserLoginData({ ...userLoginData, [name]: value });
     e.preventDefault();
   };
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
-  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
   // condition
-  if (user) {
-    navigate("/checkout");
-  }
-  if (loading || sending) {
+  if (loading || sending || loading1 || loading2) {
     return <Loading></Loading>;
   }
-
+  if (token) {
+    navigate(from, { replace: true });
+  }
+  if (user1 || user2) {
+    navigate(from, { replace: true });
+  }
   if (error) {
     errorText = <p className="text-red-600">Error: {error?.message}</p>;
   }
 
-  const handleLoginFormSubmit = (e) => {
+  const handleLoginFormSubmit = async (e) => {
     e.preventDefault();
     const { email, password } = userLoginData;
-    signInWithEmailAndPassword(email, password);
+    await signInWithEmailAndPassword(email, password);
   };
 
   //   reste  password
@@ -194,7 +200,7 @@ const Login = () => {
                     </span>
                   </button>
                   <button
-                    onClick={() => {
+                    onClick={async () => {
                       signInWithGoogle();
                     }}
                     className="flex items-center justify-center px-4 py-2 space-x-2 transition-colors duration-300 border border-gray-800 rounded-md group hover:bg-gray-800 focus:outline-none"
@@ -220,7 +226,7 @@ const Login = () => {
                       </svg>
                     </span>
                     <span className="text-sm font-medium text-blue-500 group-hover:text-white">
-                      Twitter
+                      Google
                     </span>
                   </button>
                 </div>
