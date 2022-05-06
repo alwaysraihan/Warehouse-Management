@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Login from "./Pages/Authentication/Login/Login";
 import Register from "./Pages/Authentication/Register/Register";
@@ -10,10 +10,12 @@ import Footer from "./Pages/SharedPage/Footer/Footer";
 import Header from "./Pages/SharedPage/Header/Header";
 
 function App() {
+  const { pathname } = useLocation();
   return (
     <>
-      <div className="min-h-[80vh]">
-        <Header />
+      <div className="min-h-[80vh] bg-gray-100">
+        {pathname === "/" ? <Header /> : ""}
+
         <Routes>
           <Route path="/" element={<Home />} />
 
@@ -39,7 +41,7 @@ function App() {
         </Routes>
       </div>
       <ToastContainer />
-      <Footer />
+      {pathname === "/" ? <Footer /> : ""}
     </>
   );
 }

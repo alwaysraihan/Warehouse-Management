@@ -1,26 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <>
-      <div className="footer-2 bg-gray-800 pt-6 md:pt-12">
+      <div className="footer-2 bg-gray-800 pt-6 md:pt-12 z-10">
         <div className="container px-4 mx-auto">
           <div className="md:flex md:flex-wrap md:-mx-4 py-6 md:pb-12">
             <div className="footer-info lg:w-1/3 md:px-4">
-              <h4 className="text-white text-2xl mb-4">
-                1.5K people doing coach per batch. RECOATCH trying to making
-                your life healthy.
-              </h4>
-              <p className="text-gray-400">
-                I teach everyone's carefully to achived their goal.
-              </p>
-              <div className="mt-4">
+              <img src="https://i.ibb.co/DzYH0zC/image.png" alt="logo" />
+
+              <div className="mt-1">
                 <button className="bg-facebook py-2 px-4 text-white rounded mt-2 transition-colors duration-300">
                   <span className="fab fa-facebook-f mr-2"></span> Follow
                 </button>
                 <button className="bg-twitter py-2 px-4 text-white rounded ml-2 mt-2 transition-colors duration-300">
                   <span className="fab fa-twitter mr-2"></span> Follow
-                  @recoatch25
+                  @perfume29
                 </button>
               </div>
             </div>
@@ -29,82 +25,134 @@ const Footer = () => {
               <div className="sm:flex">
                 <div className="sm:flex-1">
                   <h6 className="text-base font-medium text-white uppercase mb-2">
-                    About
+                    Main Menu
                   </h6>
                   <div>
-                    <a
-                      href="/"
+                    <Link
+                      to="/"
                       className="text-gray-400 py-1 block hover:underline"
                     >
-                      My Lifestyle
-                    </a>
-                    <a
-                      href="/"
+                      Inventoy Item's
+                    </Link>
+                    <Link
+                      to="/"
                       className="text-gray-400 py-1 block hover:underline"
                     >
-                      Blogs
-                    </a>
-                    <a
-                      href="/"
+                      Demo
+                    </Link>
+                    <Link
+                      to="/"
                       className="text-gray-400 py-1 block hover:underline"
                     >
-                      Videos
-                    </a>
-                    <a
-                      href="/"
+                      Priceing
+                    </Link>
+                    <Link
+                      to="/"
                       className="text-gray-400 py-1 block hover:underline"
                     >
-                      Careers
-                    </a>
+                      Video
+                    </Link>
                   </div>
                 </div>
                 <div className="sm:flex-1 mt-4 sm:mt-0">
                   <h6 className="text-base font-medium text-white uppercase mb-2">
-                    What I offer
+                    Quick View
                   </h6>
                   <div>
-                    <a
-                      href="/"
+                    <Link
+                      to="/"
                       className="text-gray-400 py-1 block hover:underline"
                     >
-                      Weight Lose
-                    </a>
-                    <a
-                      href="/"
+                      Privacy Policy
+                    </Link>
+                    <Link
+                      to="/"
                       className="text-gray-400 py-1 block hover:underline"
                     >
-                      Happy Life
-                    </a>
-                    <a
-                      href="/"
+                      About Us
+                    </Link>
+                    <Link
+                      to="/"
                       className="text-gray-400 py-1 block hover:underline"
                     >
-                      Motivation
-                    </a>
-                    <a
-                      href="/"
+                      Terms Of Service
+                    </Link>
+                    <Link
+                      to="/"
                       className="text-gray-400 py-1 block hover:underline"
                     >
-                      Achived Goal
-                    </a>
-                    <a
-                      href="/"
-                      className="text-gray-400 py-1 block hover:underline"
-                    >
-                      Fittnes
-                    </a>
+                      Blog
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="md:w-1/3 md:px-4 md:text-center mt-12 lg:mt-0">
-              <h5 className="text-lg text-white font-medium mb-4">
-                Dowlod Mobile App
-              </h5>
-              <button className="bg-indigo-600 text-white hover:bg-indigo-700 rounded py-2 px-6 md:px-12 transition-colors duration-300">
-                Downlod
-              </button>
+            <div className="md:w-1/3 md:px-4 md:text-left mt-12 lg:mt-0">
+              <div className="sm:flex">
+                <div className="sm:flex-1">
+                  <h6 className="text-base font-medium text-white uppercase mb-2">
+                    Link
+                  </h6>
+                  <div>
+                    <Link
+                      to="/"
+                      className="text-gray-400 py-1 block hover:underline"
+                    >
+                      About
+                    </Link>
+                    <Link
+                      to="/"
+                      className="text-gray-400 py-1 block hover:underline"
+                    >
+                      Contact
+                    </Link>
+                    <Link
+                      to="/"
+                      className="text-gray-400 py-1 block hover:underline"
+                    >
+                      FAQ
+                    </Link>
+                    <Link
+                      to="/"
+                      className="text-gray-400 py-1 block hover:underline"
+                    >
+                      Wishlist
+                    </Link>
+                  </div>
+                </div>
+                <div className="sm:flex-1 mt-4 sm:mt-0">
+                  <h6 className="text-base font-medium text-white uppercase mb-2">
+                    Warehouse info
+                  </h6>
+                  <div>
+                    <Link
+                      to="/"
+                      className="text-gray-400 py-1 block hover:underline"
+                    >
+                      Privacy Policy
+                    </Link>
+                    <Link
+                      to="/"
+                      className="text-gray-400 py-1 block hover:underline"
+                    >
+                      About Us
+                    </Link>
+                    <Link
+                      to="/"
+                      className="text-gray-400 py-1 block hover:underline"
+                    >
+                      Terms Of Service
+                    </Link>
+                    <Link
+                      to="/"
+                      className="text-gray-400 py-1 block hover:underline"
+                    >
+                      Blog
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -114,22 +162,25 @@ const Footer = () => {
             <div className="md:flex md:-mx-4 md:items-center">
               <div className="md:flex-1 md:px-4 text-center md:text-left">
                 <p className="text-white">
-                  &copy; <strong>RECOTCAH</strong>
+                  &copy; 2022 BY THE
+                  <strong>
+                    <span className="text-pink-400"> PERFUME </span>WAREHOUSE
+                  </strong>
                 </p>
               </div>
               <div className="md:flex-1 md:px-4 text-center md:text-right">
-                <a
-                  href="/"
+                <Link
+                  to="/"
                   className="py-2 px-4 text-white inline-block hover:underline"
                 >
                   Terms of Service
-                </a>
-                <a
-                  href="/"
+                </Link>
+                <Link
+                  to="/"
                   className="py-2 px-4 text-white inline-block hover:underline"
                 >
                   Privacy Policy
-                </a>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Slider from "../slider/Slider";
 
@@ -49,13 +49,20 @@ const Inventory = () => {
       }
     });
   };
+  const { stock } = stockNumber;
   const updateStock = async (id, quantity) => {
-    const { stock } = stockNumber;
     if (stock === "") {
-      return toast("Please input stock number");
+      return toast.error("Please input stock number", {
+        toastId: "inputStock",
+      });
+    }
+    if (parseInt(stock) <= 0) {
+      toast.error("Input a positive value", {
+        toastId: "registerError",
+      });
     } else {
       const getQuantity = parseInt(quantity) + parseInt(stock);
-      console.log(stock);
+
       const newQuantity = {
         quantity: getQuantity.toString(),
       };
@@ -68,44 +75,52 @@ const Inventory = () => {
           setNewData(!newData);
         }
       });
+      setStockNumber({ stock: "" });
     }
   };
 
   return (
     <>
-      <div className="flex relative lg:static">
-        <div className="sticky top-0 bg-[rgb(0,7,61)] ">
+      <div className="flex relative  ">
+        <div className="fixed  top-0  bg-[rgb(0,7,61)] h-[100vh]  ">
           <div className="absolute  top-0 left-0 h-full lg:static">
             <Slider />
           </div>
         </div>
-        <div className="ml-[52px] lg:ml-0 w-full">
+        <div className="ml-[52px] min-h-screen w-full">
           <div>
             <div className=" px-4 sm:px-8">
               <div className="py-8">
+                <div className="flex justify-end lg:px-8  items-center py-5">
+                  <NavLink
+                    to="/dashboard/manage-inventory"
+                    className="inline-block px-4 py-2  border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline"
+                  >
+                    Manage Inventory
+                  </NavLink>
+                </div>
                 <div>
                   <h2 className="text-2xl font-semibold leading-tight">
-                    Manage Inventory
+                    Inventory
                   </h2>
                 </div>
-                <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                  <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
+                <div className="-mx-4 hidden md:block fle sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+                  <div className="inline-block min-w-full  shadow-md rounded-lg overflow-hidden">
                     <table className="min-w-full leading-normal">
                       <thead>
                         <tr>
-                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                             Product Info
                           </th>
-                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                             Price
                           </th>
-                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                             Dealer Info
                           </th>
-                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                             Stock Manage
                           </th>
-                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100"></th>
                         </tr>
                       </thead>
                       {inventoryItem.map((item) => (
@@ -115,7 +130,7 @@ const Inventory = () => {
                               <div className="flex items-center">
                                 <div className="flex-shrink-0 w-10 h-10">
                                   <img
-                                    className="w-full h-full rounded-full"
+                                    className="w-full h-full "
                                     src={item.img}
                                     alt=""
                                   />
@@ -156,8 +171,74 @@ const Inventory = () => {
                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                               <button
                                 onClick={() => {
+                                  if (parseInt(stock) <= 0) {
+                                    toast.error("Item's out of stock", {
+                                      toastId: "registerError",
+                                    });
+                                  } else {
+                                    updateQuantity(item._id, item.quantity);
+                                  }
+                                }}
+                                className="block  bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium"
+                              >
+                                {parseInt(item.quantity) <= 0
+                                  ? "Sold Out"
+                                  : "Delivered"}
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      ))}
+                    </table>
+                  </div>
+                </div>
+
+                {/* mobile screen  */}
+                <div className="-mx-4 md:hidden sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+                  <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
+                    <table className="min-w-full table-auto">
+                      <thead>
+                        <tr>
+                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                            Product Info
+                          </th>
+
+                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                            Stock Manage
+                          </th>
+                        </tr>
+                      </thead>
+                      {inventoryItem.map((item) => (
+                        <tbody key={item._id}>
+                          <tr>
+                            <td className=" py-5 border-b border-gray-200 bg-white text-sm">
+                              <div className="flex flex-col justify-center items-center">
+                                <div className="flex-shrink-0 w-10 h-10">
+                                  <img
+                                    className="w-full h-full"
+                                    src={item.img}
+                                    alt=""
+                                  />
+                                </div>
+                                <div className="ml-3">
+                                  <p className="font-semibold whitespace-no-wrap">
+                                    {item.name}
+                                  </p>
+
+                                  <p className="text-gray-600 whitespace-no-wrap">
+                                    {item.quantity} in stock.
+                                  </p>
+                                </div>
+                              </div>
+                            </td>
+
+                            <td className="px-2 py-5 border-b border-gray-200 bg-white text-sm">
+                              <button
+                                onClick={() => {
                                   if (parseInt(item.quantity) <= 0) {
-                                    toast("No Items In stock");
+                                    toast.error("No Items In stock", {
+                                      toastId: "noItemsStock",
+                                    });
                                   } else {
                                     updateQuantity(item._id, item.quantity);
                                   }
@@ -178,19 +259,18 @@ const Inventory = () => {
               </div>
             </div>
 
-            <div className=" md:px-5  lg:px-[5%] xl:px-[20%] mx-auto overflow-x-auto  ">
+            <div className=" px-1 md:px-5  lg:px-[5%] xl:px-[20%] mx-auto overflow-x-auto  ">
               {inventoryItem.map((inventory) => (
                 <form
                   key={inventory._id}
-                  action=""
-                  className="inline-block p-4  w-full shadow-lg rounded-lg overflow-hidden"
+                  className="inline-block p-4 bg-white w-full shadow-lg rounded-lg overflow-hidden"
                 >
                   <div className="mb-4">
                     <div>
                       <h1 className="mt-3 text-2xl text-center font-semibold ">
                         Product Information
                       </h1>
-                      <div className="flex my-5 lg:my-0 justify-between px-[2%] items-center">
+                      <div className="flex flex-col md:flex-row my-5 lg:my-0 justify-between px-[2%] items-center">
                         <div>
                           <img src={inventory.img} alt="product" />
                         </div>

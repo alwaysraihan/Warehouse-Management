@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const AddNewStoclItem = () => {
   const {
@@ -7,7 +8,7 @@ const AddNewStoclItem = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onFormSubmit = (data) => {
+  const onFormSubmit = async (data) => {
     const newItem = {
       name: data.name,
       price: data.price,
@@ -17,12 +18,17 @@ const AddNewStoclItem = () => {
       suplierName: data.suplierName,
       email: data.email,
     };
-    axios.post("http://localhost:5000/new-inventory-item", newItem);
+    await axios.post("http://localhost:5000/new-inventory-item", newItem).then(
+      toast.success("You add a new item", {
+        toastId: "addItem",
+      })
+    );
   };
+
   return (
     <>
-      <div className="bg-slate-50 text-charcoal min-h-screen font-sans leading-normal overflow-x-hidden lg:overflow-auto">
-        <div className="flex-1 md:p-0 lg:pt-8 lg:pb-8 lg:px-8 md:ml-24 flex flex-col">
+      <div className=" my-5 text-charcoal min-h-screen font-sans leading-normal overflow-x-hidden lg:overflow-auto">
+        <div className="flex-1 md:p-0 lg:pt-8 lg:pb-8 lg:px-8 mxau flex flex-col">
           <section className="bg-slate-100 p-4 shadow">
             <div className="md:flex">
               <h2 className="md:w-1/3 uppercase tracking-wide text-sm sm:text-lg mb-6">
