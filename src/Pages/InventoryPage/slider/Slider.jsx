@@ -17,7 +17,7 @@ const Slider = () => {
     },
     {
       path: `${id ? `/dashboard/my-item` : "my-item"}`,
-      name: "Users",
+      name: "My Items",
       icon: <FaUser />,
     },
 
@@ -33,7 +33,7 @@ const Slider = () => {
     },
     {
       path: `${id ? `/dashboard/anlaysetic` : "anlaysetic"}`,
-      name: "Order",
+      name: "Analysetic",
       icon: <BiAnalyse />,
     },
     {

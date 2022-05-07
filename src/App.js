@@ -14,7 +14,15 @@ function App() {
   return (
     <>
       <div className="min-h-[80vh] bg-gray-100">
-        {pathname === "/" ? <Header /> : ""}
+        {pathname === "/" ||
+        pathname === "/login" ||
+        pathname === "/register" ||
+        pathname === "/blogs" ||
+        pathname === "/about" ? (
+          <Header />
+        ) : (
+          ""
+        )}
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -41,7 +49,15 @@ function App() {
         </Routes>
       </div>
       <ToastContainer />
-      {pathname === "/" ? <Footer /> : ""}
+      {pathname === "/" ||
+      pathname === "/login" ||
+      pathname === "/register" ||
+      pathname === "/blogs" ||
+      pathname === "/about" ? (
+        <Footer />
+      ) : (
+        ""
+      )}
     </>
   );
 }

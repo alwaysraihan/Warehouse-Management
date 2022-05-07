@@ -3,7 +3,7 @@ import React from "react";
 const Demo = () => {
   return (
     <>
-      <div className="bg-white px-5 md:px-[10] lg:px-[10%] xl:px-[15%] py-14 ">
+      <div className="bg-gray-50 px-5 md:px-[10] lg:px-[10%] xl:px-[15%] py-20 ">
         <div>
           <h2 className="text-xl mb-3 md:mb-5   text-gray-600 md:text-2xl lg:text-3xl xl:text-4xl  tracking-tight leading-10 font-semibold  text-center sm:leading-none ">
             Managing inventory can be hard. We fixed it – it's easy now.

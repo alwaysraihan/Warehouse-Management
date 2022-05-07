@@ -8,7 +8,7 @@ const ManageInventory = () => {
     const loadData = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/all-inventory-items`
+          `https://perfume-inventory-server.herokuapp.com/all-inventory-items`
         );
         setEnventoryItems(data);
       } catch (err) {
@@ -20,7 +20,7 @@ const ManageInventory = () => {
   const deleteItem = async (id) => {
     const sure = window.confirm("Are you sure? You want to delete!");
     if (sure) {
-      const url = `http://localhost:5000/inventory-items/${id}`;
+      const url = `https://perfume-inventory-server.herokuapp.com/inventory-items/${id}`;
       await axios.delete(url).then((response) => {
         const { data } = response;
         if (data) {

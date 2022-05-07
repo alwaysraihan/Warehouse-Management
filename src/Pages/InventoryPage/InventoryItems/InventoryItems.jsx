@@ -9,7 +9,7 @@ const InventoryItems = () => {
     const loadData = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/inventory-items`
+          `https://perfume-inventory-server.herokuapp.com/inventory-items`
         );
         setEnventoryItems(data);
       } catch (err) {

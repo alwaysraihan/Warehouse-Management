@@ -48,8 +48,8 @@ const Map = () => {
                       </div>
                       <div className="grow ml-6">
                         <p className="font-bold mb-1">Technical support</p>
-                        <p className="text-gray-500">support@example.com</p>
-                        <p className="text-gray-500">+1 234-567-89</p>
+                        <p className="text-gray-500">support@warehouse.com</p>
+                        <p className="text-gray-500">+880 176-325-289</p>
                       </div>
                     </div>
                   </div>
@@ -75,9 +75,9 @@ const Map = () => {
                         </div>
                       </div>
                       <div className="grow ml-6">
-                        <p className="font-bold mb-1">Sales questions</p>
-                        <p className="text-gray-500">sales@example.com</p>
-                        <p className="text-gray-500">+1 234-567-89</p>
+                        <p className="font-bold mb-1">Stock questions</p>
+                        <p className="text-gray-500">stock@warehouse.com</p>
+                        <p className="text-gray-500">+880 176-325-283</p>
                       </div>
                     </div>
                   </div>
@@ -103,9 +103,9 @@ const Map = () => {
                         </div>
                       </div>
                       <div className="grow ml-6">
-                        <p className="font-bold mb-1">Press</p>
-                        <p className="text-gray-500">press@example.com</p>
-                        <p className="text-gray-500">+1 234-567-89</p>
+                        <p className="font-bold mb-1">Daily Policy</p>
+                        <p className="text-gray-500">policy@warehouse.com</p>
+                        <p className="text-gray-500">+880 176-325-281</p>
                       </div>
                     </div>
                   </div>
@@ -132,8 +132,8 @@ const Map = () => {
                       </div>
                       <div className="grow ml-6">
                         <p className="font-bold mb-1">Bug report</p>
-                        <p className="text-gray-500">bugs@example.com</p>
-                        <p className="text-gray-500">+1 234-567-89</p>
+                        <p className="text-gray-500">bugs@warehouse.com</p>
+                        <p className="text-gray-500">+880 176-325-285</p>
                       </div>
                     </div>
                   </div>

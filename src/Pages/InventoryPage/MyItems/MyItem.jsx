@@ -17,7 +17,7 @@ const MyItem = () => {
     const loadData = async () => {
       try {
         const email = user.email;
-        const url = `http://localhost:5000/my-items?email=${email}`;
+        const url = `https://perfume-inventory-server.herokuapp.com/my-items?email=${email}`;
         const { data } = await axiosSecret.get(url);
         setEnventoryItems(data);
       } catch (error) {
@@ -33,7 +33,7 @@ const MyItem = () => {
   const deleteItem = async (id) => {
     const sure = window.confirm("Are you sure? You want to delete!");
     if (sure) {
-      const url = `http://localhost:5000/inventory-items/${id}`;
+      const url = `https://perfume-inventory-server.herokuapp.com/inventory-items/${id}`;
       await axios.delete(url).then((response) => {
         const { data } = response;
         if (data) {

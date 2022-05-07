@@ -18,11 +18,16 @@ const AddNewStoclItem = () => {
       suplierName: data.suplierName,
       email: data.email,
     };
-    await axios.post("http://localhost:5000/new-inventory-item", newItem).then(
-      toast.success("You add a new item", {
-        toastId: "addItem",
-      })
-    );
+    await axios
+      .post(
+        "https://perfume-inventory-server.herokuapp.com/new-inventory-item",
+        newItem
+      )
+      .then(
+        toast.success("You add a new item", {
+          toastId: "addItem",
+        })
+      );
   };
 
   return (

@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { NavLink, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import auth from "../../../Firebase/firebase.init";
 import Slider from "../slider/Slider";
 
 const Inventory = () => {
+  const [user] = useAuthState(auth);
   const { id } = useParams();
   const [inventoryItem, setEnventoryItem] = useState([]);
   const [stockNumber, setStockNumber] = useState({
@@ -24,7 +27,7 @@ const Inventory = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const url = `http://localhost:5000/manage-inventory?_id=${id}`;
+        const url = `https://perfume-inventory-server.herokuapp.com/manage-inventory?_id=${id}`;
         const { data } = await axios.get(url);
         setEnventoryItem(data);
       } catch (err) {
@@ -41,7 +44,7 @@ const Inventory = () => {
     };
 
     // send data to the monogod server and update
-    const url = `http://localhost:5000/inventory-items/${id}`;
+    const url = `https://perfume-inventory-server.herokuapp.com/inventory-items/${id}`;
     await axios.put(url, newQuantity).then((response) => {
       const { data } = response;
       if (data) {
@@ -68,7 +71,7 @@ const Inventory = () => {
       };
 
       // send data to the monogod server and update
-      const url = `http://localhost:5000/inventory-items/${id}`;
+      const url = `https://perfume-inventory-server.herokuapp.com/inventory-items/${id}`;
       await axios.put(url, newQuantity).then((response) => {
         const { data } = response;
         if (data) {
@@ -88,6 +91,34 @@ const Inventory = () => {
           </div>
         </div>
         <div className="ml-[52px] min-h-screen w-full">
+          <div>
+            <div className=" w-[100%] flex items-center justify-between px-2 md:px-5 shadow-md bg-white py-2 bg-opacity-50">
+              <div>
+                <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl text-blue-500 font-semibold ">
+                  Admin Pannel
+                </h1>
+              </div>
+              <div className="w-16 h-16 relative">
+                <div>
+                  <span className="absolute top-0 right-0 h-2 w-2 mt-1 mr-2 bg-green-500 rounded-full"></span>
+                  <span className="absolute top-0 right-0 h-2 w-2 mt-1 mr-2 bg-green-500 rounded-full animate-ping"></span>
+                </div>
+                {user?.photoURL ? (
+                  <img
+                    className="w-16 h-16 rounded-full border-2 border-blue-600"
+                    src={user.photoURL}
+                    alt="profile"
+                  />
+                ) : (
+                  <img
+                    className="w-16 h-16 rounded-full border-2 border-blue-600"
+                    src="https://i.ibb.co/KDfw63R/Pngtree-business-male-icon-vector-4187852.png"
+                    alt="profile"
+                  />
+                )}
+              </div>
+            </div>
+          </div>
           <div>
             <div className=" px-4 sm:px-8">
               <div className="py-8">
