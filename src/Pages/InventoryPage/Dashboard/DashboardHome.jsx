@@ -43,7 +43,7 @@ const DashboardHome = () => {
           <div className="flex items-center justify-between">
             <div className="flex flex-col space-y-2">
               <span className="text-gray-400">Total Dealers</span>
-              <span className="text-lg font-semibold">520</span>
+              <span className="text-lg font-semibold">2000</span>
             </div>
             <div className=" bg-gray-200 rounded-md ">
               <img
@@ -57,14 +57,14 @@ const DashboardHome = () => {
             <span className="inline-block px-2 text-sm text-white bg-green-300 rounded">
               89%
             </span>
-            <span> Active Users</span>
+            <span> Active Dealers</span>
           </div>
         </div>
         {/* card 3 */}
         <div className="p-4 bg-white  transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
           <div className="flex items-center justify-between">
             <div className="flex flex-col space-y-2">
-              <span className="text-gray-400">New Users</span>
+              <span className="text-gray-400">New Dealers</span>
               <span className="text-lg font-semibold">14</span>
             </div>
             <div className=" bg-gray-200 rounded-md">
@@ -86,7 +86,7 @@ const DashboardHome = () => {
         <div className="p-4 bg-white  transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
           <div className="flex items-center justify-between">
             <div className="flex flex-col space-y-2">
-              <span className="text-gray-400">New Users</span>
+              <span className="text-gray-400">New Dealers</span>
               <span className="text-lg font-semibold">72</span>
             </div>
             <div className=" bg-gray-200 rounded-md">

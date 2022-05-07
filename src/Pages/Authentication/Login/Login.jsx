@@ -135,6 +135,7 @@ const Login = () => {
                     Password
                   </label>
                   <button
+                    type="button"
                     onClick={resetPassword}
                     className="text-sm text-blue-600 hover:underline focus:text-blue-800"
                   >
