@@ -196,6 +196,7 @@ const Inventory = () => {
                           </th>
                         </tr>
                       </thead>
+
                       {inventoryItem.map((item) => (
                         <tbody key={item._id}>
                           <tr>
@@ -265,7 +266,19 @@ const Inventory = () => {
                     </table>
                   </div>
                 </div>
-
+                {inventoryItem.length === 0 ? (
+                  <div className=" w-full my-10 z-50 overflow-hidden  opacity-75 flex flex-col items-center justify-center">
+                    <div
+                      className="spinner-border animate-spin inline-block text-teal-600 mb-10 w-14 h-14 border-6 rounded-full"
+                      role="status"
+                    ></div>
+                    <h2 className="text-center text-blue-500 text-xl font-semibold">
+                      Loading...
+                    </h2>
+                  </div>
+                ) : (
+                  ""
+                )}
                 {/* mobile screen  */}
                 <div className="-mx-4 md:hidden sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                   <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">

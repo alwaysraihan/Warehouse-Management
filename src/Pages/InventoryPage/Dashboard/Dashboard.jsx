@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Route, Routes } from "react-router-dom";
 import auth from "../../../Firebase/firebase.init";
+import PageNotFound from "../../PageNotFound/PageNotFound";
 import AddNewStoclItem from "../AddNewInventory/AddNewStoclItem";
 import ManageInventory from "../Inventory/ManageInventory/ManageInventory";
 import MyItem from "../MyItems/MyItem";
@@ -98,6 +99,7 @@ const Dashboard = () => {
               <Route path="/my-item" element={<MyItem />} />
               <Route path="/manage-inventory" element={<ManageInventory />} />
               <Route path="/add-inventory-item" element={<AddNewStoclItem />} />
+              <Route path="/*" element={<PageNotFound />} />
             </Routes>
           </div>
         </div>
