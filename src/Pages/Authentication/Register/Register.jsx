@@ -40,7 +40,7 @@ const Login = () => {
   if (user1 || user2) {
     navigate(from, { replace: true });
   }
-  if (loading1 || loading2) {
+  if (loading || loading1 || loading2) {
     return <Loading></Loading>;
   }
   if (error || updateError || error1 || error2) {
