@@ -88,9 +88,7 @@ const InventoryItems = () => {
                 </div>
                 <div className="ribbon ribbon-top-right">
                   <span>
-                    {parseInt(item.quantity) === 0
-                      ? "Out of stock"
-                      : "In Stock"}
+                    {parseInt(item.quantity) === 0 ? "Stock Out" : "In Stock"}
                   </span>
                 </div>
               </div>

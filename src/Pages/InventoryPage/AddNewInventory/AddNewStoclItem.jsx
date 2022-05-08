@@ -6,6 +6,7 @@ const AddNewStoclItem = () => {
   const {
     register,
     handleSubmit,
+    resetField,
     formState: { errors },
   } = useForm();
   const onFormSubmit = async (data) => {
@@ -28,7 +29,9 @@ const AddNewStoclItem = () => {
           toastId: "addItem",
         })
       );
+    resetField("name");
   };
+  console.log(errors.description);
 
   return (
     <>
@@ -61,8 +64,13 @@ const AddNewStoclItem = () => {
                       type="text"
                       name="name"
                       placeholder="Enter your new product name"
-                      {...register("name")}
+                      {...register("name", { required: true })}
                     />
+                    {errors.name && (
+                      <span className="text-red-500">
+                        This field is required
+                      </span>
+                    )}
                   </div>
                   <div className="md:flex mb-4">
                     <div className="md:flex-1 md:pr-3">
@@ -74,8 +82,13 @@ const AddNewStoclItem = () => {
                         type="number"
                         name="price"
                         placeholder="$ 000"
-                        {...register("price")}
+                        {...register("price", { required: true })}
                       />
+                      {errors.price && (
+                        <span className="text-red-500">
+                          This field is required
+                        </span>
+                      )}
                     </div>
                     <div className="md:flex-1 md:pl-3">
                       <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
@@ -86,8 +99,13 @@ const AddNewStoclItem = () => {
                         type="number"
                         name="quantity"
                         placeholder="0"
-                        {...register("quantity")}
+                        {...register("quantity", { required: true })}
                       />
+                      {errors.quantity && (
+                        <span className="text-red-500">
+                          This field is required
+                        </span>
+                      )}
                     </div>
                   </div>
                   <div className="md:flex mb-4">
@@ -101,8 +119,13 @@ const AddNewStoclItem = () => {
                         type="url"
                         name="img"
                         placeholder="https://i.ibb.co/XS2Nz4Y/s2.jpg"
-                        {...register("img")}
+                        {...register("img", { required: true })}
                       />
+                      {errors.img && (
+                        <span className="text-red-500">
+                          This field is required
+                        </span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -122,8 +145,16 @@ const AddNewStoclItem = () => {
                     placeholder="Enter Product Description here............."
                     rows="6"
                     name="description"
-                    {...register("description")}
+                    {...register("description", {
+                      minLength: 50,
+                      required: true,
+                    })}
                   ></textarea>
+                  {errors.description && (
+                    <span className="text-red-500">
+                      Minimum 50 chracter required
+                    </span>
+                  )}
                 </div>
               </div>
               <div className="md:flex mb-8">
@@ -145,8 +176,15 @@ const AddNewStoclItem = () => {
                       type="text"
                       name="suplierName"
                       placeholder="Raihan Sarkar"
-                      {...register("suplierName")}
+                      {...register("suplierName", {
+                        required: true,
+                      })}
                     />
+                    {errors.suplierName && (
+                      <span className="text-red-500">
+                        This field is required
+                      </span>
+                    )}
                   </div>
 
                   <div className="mb-4">
@@ -158,8 +196,13 @@ const AddNewStoclItem = () => {
                       type="email"
                       name="email"
                       placeholder="perfume.dealer@gmail.com"
-                      {...register("email")}
+                      {...register("email", { required: true })}
                     />
+                    {errors.email && (
+                      <span className="text-red-500">
+                        This field is required
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>

@@ -16,7 +16,7 @@ const Demo = () => {
         <div className="mt-10">
           <img
             className="rounded-lg"
-            src="https://i.ibb.co/VqHb1w8/d.png"
+            src="https://i.ibb.co/tzLczRd/1s.png"
             alt="demo"
           />
         </div>
