@@ -12,6 +12,7 @@ import Footer from "./Pages/SharedPage/Footer/Footer";
 import Header from "./Pages/SharedPage/Header/Header";
 import Loading from "../src/Pages/SharedPage/Loading/Loading";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
+import Blogs from "../src/Pages/Blog/Blog";
 function App() {
   const { pathname } = useLocation();
   const [user, loading] = useAuthState(auth);
@@ -27,6 +28,7 @@ function App() {
           <div>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/blogs" element={<Blogs />} />
 
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
