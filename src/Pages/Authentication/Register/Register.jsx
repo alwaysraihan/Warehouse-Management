@@ -169,7 +169,7 @@ const Login = () => {
                   type="submit"
                   className="w-full px-4 py-2 text-lg font-semibold text-white transition-colors duration-300 bg-blue-500 rounded-md shadow hover:bg-blue-600 focus:outline-none "
                 >
-                  Log in
+                  Signup
                 </button>
               </div>
               <div className="flex flex-col space-y-5">
