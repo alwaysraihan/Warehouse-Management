@@ -30,6 +30,13 @@ const AddNewStoclItem = () => {
         })
       );
     resetField("name");
+    resetField("price");
+    resetField("quantity");
+    resetField("img");
+    resetField("description");
+    resetField("quantity");
+    resetField("suplierName");
+    resetField("email");
   };
   console.log(errors.description);
 

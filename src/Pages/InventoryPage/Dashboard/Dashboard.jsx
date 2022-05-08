@@ -57,19 +57,19 @@ const Dashboard = () => {
 
                     <div className="absolute   hidden right-0 top-0 mt-10 bg-white rounded-md shadow-lg  group-hover:block hover:block">
                       <div>
-                        <div class="flex flex-col p-4 space-y-1 font-medium border-b">
-                          <span class="text-gray-800">
+                        <div className="flex flex-col p-4 space-y-1 font-medium border-b">
+                          <span className="text-gray-800">
                             {user.displayName ? user.displayName : "User"}
                           </span>
-                          <span class="text-sm text-gray-400">
+                          <span className="text-sm text-gray-400">
                             {user.email ? user.email : "dealer@example.com"}
                           </span>
                         </div>
-                        <ul class="flex flex-col p-2 my-2 space-y-1">
+                        <ul className="flex flex-col p-2 my-2 space-y-1">
                           <li>
                             <Link
                               to="/"
-                              class="block px-2 py-1 text-teal-600  transition rounded-md hover:bg-gray-100"
+                              className="block px-2 py-1 text-teal-600  transition rounded-md hover:bg-gray-100"
                             >
                               Home Page
                             </Link>
@@ -77,13 +77,13 @@ const Dashboard = () => {
                           <li>
                             <Link
                               to="manage-inventory"
-                              class="block px-2 py-1  text-teal-600 transition rounded-md hover:bg-gray-100"
+                              className="block px-2 py-1  text-teal-600 transition rounded-md hover:bg-gray-100"
                             >
                               Manage Inventory
                             </Link>
                           </li>
                         </ul>
-                        <div class="flex items-center text-xl justify-center p-4 text-blue-600 underline border-t">
+                        <div className="flex items-center text-xl justify-center p-4 text-blue-600 underline border-t">
                           <span onClick={handleSignOut}>Logout</span>
                         </div>
                       </div>
